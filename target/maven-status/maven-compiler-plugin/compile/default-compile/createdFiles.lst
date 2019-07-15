@@ -1,0 +1,12 @@
+domain/model/entities/BaseEntity.class
+utils/MongoConnection.class
+wom/neg/JAXRSConfiguration.class
+domain/model/service/OrderServiceImpl.class
+wom/neg/orders/boundary/OrdersResource.class
+domain/model/repository/OrderDaoImpl.class
+wom/neg/LoggerProducer.class
+wom/neg/events/entity/CoffeeType.class
+domain/model/entities/DefaultEntity.class
+domain/model/service/OrderService.class
+domain/model/entities/Order.class
+domain/model/repository/OrderDao.class
