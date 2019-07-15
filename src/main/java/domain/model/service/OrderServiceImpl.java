@@ -37,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
 		
 		Query<Order> query = this.orderDao.createQuery().filter("id", id);
+		
 		return (Order) this.orderDao.findOne(query);
 	}
 

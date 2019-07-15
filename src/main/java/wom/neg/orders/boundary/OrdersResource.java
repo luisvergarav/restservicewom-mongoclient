@@ -1,4 +1,4 @@
-package wom.neg.orders.boundary;
+ package wom.neg.orders.boundary;
 
 import wom.neg.events.entity.CoffeeType;
 
@@ -46,7 +46,7 @@ public class OrdersResource {
         try {
 			orderService.add(orderToPersist);
 		} catch (Exception e) {
-			logger.log(java.util.logging.Level.SEVERE, "Error persisting order " + order);
+			logger.log(java.util.logging.Level.SEVERE, "Error persisting order " + order + e.getLocalizedMessage());
 		}
  
         return Response.ok().header(HttpHeaders.LOCATION, "").build();
