@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
+import com.mongodb.client.MongoDatabase;
 
 @Singleton
 @Startup
@@ -44,11 +46,15 @@ public class MongoConnection {
 			MongoClientURI uri = new MongoClientURI(System.getenv("MongoUri"), options);
 			//MongoClientURI uri = new MongoClientURI("mongodb://localhost:27017/test", options);
 
+			
+			
 			logger.log(Level.INFO,"About to connect to MongoDB @ " + uri.toString());
 
 			try {
 				mongo = new MongoClient(uri);
 				// mongo.setWriteConcern(WriteConcern.ACKNOWLEDGED);
+
+				 MongoDatabase database = mongo.getDatabase(System.getenv("MongoDB"));
 			} catch (MongoException ex) {
 				logger.log(Level.SEVERE,"An error occoured when connecting to MongoDB", ex);
 			} catch (Exception ex) {
