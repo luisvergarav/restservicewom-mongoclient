@@ -53,8 +53,6 @@ public class MongoConnection {
 			try {
 				mongo = new MongoClient(uri);
 				// mongo.setWriteConcern(WriteConcern.ACKNOWLEDGED);
-
-				 MongoDatabase database = mongo.getDatabase(System.getenv("MongoDB"));
 			} catch (MongoException ex) {
 				logger.log(Level.SEVERE,"An error occoured when connecting to MongoDB", ex);
 			} catch (Exception ex) {
@@ -84,7 +82,7 @@ public class MongoConnection {
 	@Named("ds") 
 	public Datastore getDatastore() {
 		if (dataStore == null) {
-			String dbName = "testdb";
+			String dbName = System.getenv("MongoDB");
 			logger.log(Level.INFO,format("Starting DataStore on DB: %s", dbName));
 			dataStore = getMorphia().createDatastore(getMongo(), dbName);
 			return dataStore;
